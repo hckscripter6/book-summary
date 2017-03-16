@@ -1,0 +1,37 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+	booksummary app
+{% endblock %}
+
+{% block jumbotron %}
+	<div class="jumbotron">
+		<h2>Book Summary Website</h2>
+	</div>
+{% endblock %}
+
+{% block content %}
+	{% if post %}
+		{% for display in post %}
+			<article>
+				<h2><a href="post/{{ display.url }}">{{ display.title }}</a></h2>
+				<p>{{ display.published.strftime('%b %d, %Y') }}</p>
+				
+				<div class="text">
+					{{ display.body | safe }}
+				</div>
+			</article>	
+		{% endfor %}
+	{% else %}
+		<div class="well">
+			<h2>Sorry, there are no posts yet.  I am currently working on it</h2>
+		</div>
+	{% endif %}
+{% endblock %}
+
+
+
+ 
+
+

@@ -1,0 +1,25 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+   {{ post.title | safe }}
+{% endblock %}
+
+{% block content %}
+	<h1>{{ single.title | safe }}</h1>
+	<p>{{ single.body | safe}}</p>
+{% endblock %}
+
+{% block sidebar %}
+	<aside>
+		<h2>Summaries</h2>
+		
+		
+		<ul>
+		{% for display in post %}
+
+			<li><a href="/post/{{ display.url }}">{{ display.title }}</a></li>
+		
+		{% endfor %}
+		</ul>
+	</aside>
+{% endblock %}

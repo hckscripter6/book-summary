@@ -1,0 +1,47 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+	WTForms
+{% endblock %}
+
+
+{% block admin_content %}
+<a class="create btn btn-lg btn-success" href="{{ url_for('create') }}">Create New Post</a>
+<div class="row dashboard_posts">
+	<div class="col-md-8">
+		<div class="panel panel-primary wrap">
+			<div class="panel-heading">
+				<h2>Public Posts</h2>
+			</div>
+			<div class="panel-body">
+				<ul class="list-group">
+					{% for display in public %}
+						<li class="list-group-item"><a href="post/{{ display.url }}/edit">{{ display.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-4">
+		<div class="panel panel-primary wrap">
+			<div class="panel-heading">
+				<h2>Private Posts</h2>
+			</div>
+			<div class="panel-body">
+				{% if private %}
+					<ul class="list-group">
+						{% for display in private %}
+							<a href="post/{{ display.url }}/edit"><li class="list-group-item">{{ display.title }}</li></a>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<h3 style="text-align: center;">There are no private posts for edit as of now</h3>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+	
+{% endblock %}
